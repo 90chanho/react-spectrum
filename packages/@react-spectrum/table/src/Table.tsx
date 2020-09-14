@@ -20,7 +20,7 @@ import intlMessages from '../intl/*.json';
 import {layoutInfoToStyle, ScrollView, setScrollLeft, useVirtualizer, VirtualizerItem} from '@react-aria/virtualizer';
 import {mergeProps} from '@react-aria/utils';
 import {ProgressCircle} from '@react-spectrum/progress';
-import React, {ReactElement, useCallback, useContext, useMemo, useRef} from 'react';
+import React, {ReactElement, useCallback, useContext, useEffect, useMemo, useRef} from 'react';
 import {Rect, ReusableView, useVirtualizerState} from '@react-stately/virtualizer';
 import {SpectrumColumnProps, SpectrumTableProps, TableNode} from '@react-types/table';
 import styles from '@adobe/spectrum-css-temp/components/table/vars.css';
@@ -541,6 +541,10 @@ function TableCell({cell}) {
     ref,
     isVirtualized: true
   }, state);
+
+  // useEffect(() => () => {
+  //   console.log("unmount", ref.current?.textContent, cell);
+  // }, []);
 
   return (
     <TableCellBase

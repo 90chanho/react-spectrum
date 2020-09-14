@@ -149,7 +149,9 @@ export function useVirtualizer<T extends object, V, W>(props: VirtualizerOptions
   // move focus to the collection view as a whole if focus was within before.
   let focusedView = virtualizer.getView(focusedKey);
   useEffect(() => {
+    console.log("focus?", focusedKey, !focusedView, isFocusWithin.current, document.activeElement !== ref.current)
     if (focusedKey && !focusedView && isFocusWithin.current && document.activeElement !== ref.current) {
+      console.log("focus", ref.current)
       focusWithoutScrolling(ref.current);
     }
   });
